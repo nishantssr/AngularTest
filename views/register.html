@@ -1,0 +1,56 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Please fill out the form to register</h3>
+	</div>
+	<div class="panel-body">
+		<form name="regForm" class="form" novalidate>
+			
+			<div class="form-group">
+				<label for="email" class="control-label">email:</label>
+				<input name="uEmail" type="email" id="email" class="form-control" ng-model="user.email" required=""/>
+				<br/>
+				<div ng-show="regForm.$submitted || regForm.uEmail.$touched">
+					<span ng-show="regForm.uEmail.$error.required">Please provide your e-mail adress, eg. me@example.org</span>
+					<span ng-show="regForm.uEmail.$error.email">This is not a valid email address.</span>
+				</div>
+			</div>
+<!--
+            <div class="form-group">
+				<label for="email" class="control-label">confirm email:</label>
+				<input name="confirmEmail" type="email"  class="form-control" ng-model="user.confirmEmail" required=""  data-password-verify="user.uEmail" />
+                <br/>
+           
+            <div ng-show="regForm.$submitted || regForm.uEmail.$touched">
+					<span ng-show="regForm.confirmEmail.$error.noMatch">provided emails doesnot matches</span>
+				</div>    
+			</div>
+-->				
+
+			<div class="form-group">
+				<label for="password" class="control-label">password:</label>
+				<input name="password" type="password" id="password" class="form-control" ng-model="user.password" required="" ng-minlength="8"/>
+                <br/>
+            <div ng-show="regForm.$submitted || regForm.password.$touched">
+					<span ng-show="regForm.password.$error.required">Please select a password.</span>
+					<span ng-show="regForm.password.$error.minlength">Your password should be at least 8 characters long.</span>
+				</div>    
+			</div>
+
+			<div class="form-group">
+				<label for="password" class="control-label">confirm password:</label>
+				<input name="confirmPassword" type="password"  class="form-control" ng-model="user.confirmPassword" required="" ng-minlength="8" data-password-verify="user.password" />
+                <br/>
+           
+            <div ng-show="regForm.$submitted || regForm.confirmPassword.$touched">
+					<span ng-show="regForm.confirmPassword.$error.passwordVerify">provided password doesnot matches</span>
+				</div>    
+			</div>
+
+
+			<div class="form-group">
+				<input type="button" ng-click="submit(user)" ng-disabled="regForm.$invalid" class="btn btn-primary pull-right" value="register" />
+			</div>
+
+		</form>
+	</div>
+</div>
